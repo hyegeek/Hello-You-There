@@ -1,0 +1,19 @@
+[Lenny]
+exten => s,1,Answer()
+same => n,MixMonitor(test-${UNIQUEID}.wav); record if you want
+
+same => n,Set(clips="Lenny","")
+same => n,Set(clips_num=16,0)
+same => n,Set(clips_loop=7,0)
+same => n,Set(clips_tries=-1,0)
+same => n,Set(clips_silence="Lenny/backgroundnoise","")
+
+;same => n,Set(transitions="","")
+
+same => n,Set(hellos="","")
+;same => n,Set(hellos_num=0,0)
+;same => n,Set(hellos_tries=0,0)
+
+same => n,Goto(talk,NextClip)
+
+#include teletrap.conf
