@@ -1,0 +1,20 @@
+[Kids]
+exten => s,1,Answer()
+same => n,MixMonitor(test-${UNIQUEID}.wav); record if you want
+
+same => n,Set(clips="kids/fouryearold","kids/sixyearold")
+same => n,Set(clips_num=8,8)
+same => n,Set(clips_loop=1,2)
+same => n,Set(clips_tries=1,-1)
+same => n,Set(clips_silence="silence/5","silence/5")
+
+same => n,Set(transitions="kids/sixyearold/a_GiveItToMeLetMeTalk&silence/1&kids/sixyearold/a_doYouWantToSpeakToDad&silence/1","")
+
+same => n,Set(hellos="","kids/sixyearoldhellos")
+same => n,Set(hellos_num=0,7)
+same => n,Set(hellos_tries=0,7)
+same => n,Set(hellos_silence="","kids/sixyearoldhellos")
+
+same => n,Goto(talk,NextClip)
+
+#include teletrap.conf
